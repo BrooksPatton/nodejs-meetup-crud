@@ -35,6 +35,18 @@ app.post('/api/games', function(req, res, next){
   })
 });
 
+app.delete('/api/games/:id', function(req, res, next){
+  var id = req.params.id;
+
+  games.findOneAndDelete({_id: id})
+  .then(function(){
+    res.json({status: 'deleted'});
+  })
+  .catch(function(err){
+    res.json(err);
+  });
+});
+
 app.listen(port, function(){
   console.log('api listening on port ' + port);
 })
