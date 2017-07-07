@@ -4,7 +4,7 @@ var monk = require('monk');
 
 var app = express();
 var port = process.env.PORT || 3000;
-var mongoURI = 'mongodb://heroku_pw9xh1rp:vnoi5micvvv38b5cjb2hdq3c9h@ds151232.mlab.com:51232/heroku_pw9xh1rp'
+var mongoURI = process.env.MONGODB_URI;
 var db = monk(mongoURI || 'localhost/gameslocker');
 var games = db.get('games');
 
