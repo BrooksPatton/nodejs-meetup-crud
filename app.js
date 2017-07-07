@@ -3,8 +3,9 @@ var bodyParser = require('body-parser');
 var monk = require('monk');
 
 var app = express();
-var port = 3000;
-var db = monk('localhost/gameslocker');
+var port = process.env.PORT || 3000;
+var mongoURI = 'mongodb://heroku_pw9xh1rp:vnoi5micvvv38b5cjb2hdq3c9h@ds151232.mlab.com:51232/heroku_pw9xh1rp'
+var db = monk(mongoURI || 'localhost/gameslocker');
 var games = db.get('games');
 
 // parse application/x-www-form-urlencoded
